@@ -1,14 +1,73 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern CSS Showcase</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+    <header class="hero">
+        <h1>Modern CSS Showcase</h1>
+        <p>최신 CSS 기능을 직접 체험해 보세요.</p>
+    </header>
+
+    <main class="container">
+        <!-- 1. Container Queries -->
+        <section id="container-queries">
+            <h2>1. Container Queries (@container)</h2>
+            <p>부모 요소의 크기에 따라 스타일이 변하는 똑똑한 컴포넌트입니다.</p>
+            <div class="resize-handle">
+                <div class="card-container">
+                    <article class="responsive-card">
+                        <div class="card-image"></div>
+                        <div class="card-content">
+                            <h3>스마트 카드</h3>
+                            <p>나를 감싸는 컨테이너의 크기를 조절해 보세요. 레이아웃이 유동적으로 변합니다.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. The :has() Selector -->
+        <section id="has-selector">
+            <h2>2. The :has() Selector</h2>
+            <p>자식 요소의 상태에 따라 부모의 배경색이 변합니다.</p>
+            <div class="has-card">
+                <label>
+                    <input type="checkbox" id="accent-toggle">
+                    배경 강조색 적용하기
+                </label>
+                <div class="has-inner">
+                    <p>체크박스를 선택하면 카드 전체 스타일이 변합니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. OKLCH Colors & Gradients -->
+        <section id="colors">
+            <h2>3. Modern Colors (OKLCH)</h2>
+            <p>더 생동감 있고 일관된 색상을 제공하는 현대적인 컬러 스페이스입니다.</p>
+            <div class="color-grid">
+                <div class="swatch" style="--bg: oklch(60% 0.15 200);"></div>
+                <div class="swatch" style="--bg: oklch(70% 0.2 300);"></div>
+                <div class="swatch" style="--bg: oklch(80% 0.25 400);"></div>
+                <div class="swatch" style="--bg: oklch(90% 0.3 500);"></div>
+            </div>
+            <div class="glow-button-container">
+                <button class="glow-button">Glow Effect Button</button>
+            </div>
+        </section>
+
+        <!-- 4. Custom Elements -->
+        <section id="web-components">
+            <h2>4. Web Components</h2>
+            <p>JavaScript로 정의된 캡슐화된 사용자 정의 요소입니다.</p>
+            <css-demo-card title="Encapsulated Element" description="Shadow DOM을 사용하는 웹 컴포넌트입니다."></css-demo-card>
+        </section>
+    </main>
+
+    <script src="main.js" type="module"></script>
 </body>
 </html>
