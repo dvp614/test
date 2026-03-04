@@ -1,82 +1,162 @@
 /**
- * 성격 유형 테스트 로직
+ * 나와 닮은 영혼의 동물 찾기 - 고도화된 퀴즈 로직
  */
 
-// 1. 데이터 정의
+// 1. 데이터 정의 (12개 질문 & 8가지 동물 결과)
 const quizData = {
     questions: [
         {
             id: 1,
-            text: "새로운 사람들을 만날 때 당신의 반응은?",
+            text: "낯선 파티에 초대받았을 때, 당신의 첫 행동은?",
             options: [
-                { text: "먼저 다가가서 말을 건다", types: { E: 2, I: 0 } },
-                { text: "상대방이 먼저 말을 걸 때까지 기다린다", types: { E: 0, I: 2 } }
+                { text: "먼저 중앙으로 나가 사람들과 인사를 나눈다", weights: { lion: 2, dolphin: 3, dog: 1 } },
+                { text: "구석에서 아는 사람이 있는지 조용히 살핀다", weights: { cat: 2, owl: 1, sloth: 1, wolf: 1 } }
             ]
         },
         {
             id: 2,
-            text: "주말을 보내는 가장 이상적인 방법은?",
+            text: "어려운 과제가 주어졌을 때 당신의 해결 방식은?",
             options: [
-                { text: "밖으로 나가 친구들과 활기차게 노는 것", types: { E: 2, S: 1 } },
-                { text: "집에서 혼자 조용히 취미 생활을 즐기는 것", types: { I: 2, N: 1 } }
+                { text: "철저한 분석과 계획을 세운 후 실행한다", weights: { owl: 3, fox: 1, wolf: 1 } },
+                { text: "직관을 믿고 일단 부딪히며 해결책을 찾는다", weights: { lion: 1, dolphin: 1, fox: 2 } }
             ]
         },
         {
             id: 3,
-            text: "일을 처리할 때 당신의 스타일은?",
+            text: "친구들이 당신을 부르는 별명은 주로?",
             options: [
-                { text: "철저한 계획을 세워 하나씩 해결한다", types: { J: 2, S: 1 } },
-                { text: "상황에 따라 유연하게 즉흥적으로 대응한다", types: { P: 2, N: 1 } }
+                { text: "든든하고 믿음직한 리더", weights: { lion: 3, wolf: 1, dog: 1 } },
+                { text: "분위기를 띄우는 분위기 메이커", weights: { dolphin: 3, dog: 2 } }
             ]
         },
         {
             id: 4,
-            text: "영화나 책을 볼 때 당신이 더 끌리는 것은?",
+            text: "쉬는 날, 아무런 계획이 없다면?",
             options: [
-                { text: "현실적이고 구체적인 이야기", types: { S: 2, T: 1 } },
-                { text: "상상력을 자극하는 추상적인 세계관", types: { N: 2, F: 1 } }
+                { text: "침대와 한 몸이 되어 무한 휴식을 즐긴다", weights: { sloth: 3, cat: 1 } },
+                { text: "뭐라도 해야 직성이 풀려 밖으로 나간다", weights: { lion: 1, fox: 1, dolphin: 1 } }
             ]
         },
         {
             id: 5,
-            text: "친구의 고민 상담을 해줄 때 당신은?",
+            text: "갈등 상황이 생겼을 때 당신은?",
             options: [
-                { text: "객관적인 해결책을 제시하려 노력한다", types: { T: 2, J: 1 } },
-                { text: "친구의 감정에 공감하며 위로해준다", types: { F: 2, P: 1 } }
+                { text: "자신의 의견을 당당하게 주장한다", weights: { lion: 2, wolf: 2, fox: 1 } },
+                { text: "상대방의 입장을 먼저 듣고 중재하려 한다", weights: { dog: 3, dolphin: 1, owl: 1 } }
+            ]
+        },
+        {
+            id: 6,
+            text: "새로운 기술이나 지식을 배울 때?",
+            options: [
+                { text: "깊게 파고들어 원리를 완벽히 이해해야 한다", weights: { owl: 3, cat: 1 } },
+                { text: "빠르게 핵심만 파악하고 실전에 응용한다", weights: { fox: 3, lion: 1 } }
+            ]
+        },
+        {
+            id: 7,
+            text: "약속 시간에 친구가 늦는다고 하면?",
+            options: [
+                { text: "그럴 수도 있지! 기다리며 다른 일을 한다", weights: { sloth: 2, dog: 2, dolphin: 1 } },
+                { text: "시간 엄수는 기본인데... 조금 기분이 상한다", weights: { lion: 1, owl: 2, wolf: 1 } }
+            ]
+        },
+        {
+            id: 8,
+            text: "당신이 가장 선호하는 업무 환경은?",
+            options: [
+                { text: "팀원들과 활발히 소통하며 협업하는 환경", weights: { dolphin: 2, dog: 3, lion: 1 } },
+                { text: "독립적으로 집중해서 결과를 내는 환경", weights: { cat: 3, wolf: 2, owl: 1 } }
+            ]
+        },
+        {
+            id: 9,
+            text: "길을 가다가 곤란에 처한 사람을 보면?",
+            options: [
+                { text: "먼저 다가가서 도와줄 방법을 찾는다", weights: { dog: 3, dolphin: 1, lion: 1 } },
+                { text: "도와주고 싶지만 쑥스러워 망설인다", weights: { cat: 2, sloth: 1, owl: 1 } }
+            ]
+        },
+        {
+            id: 10,
+            text: "미래를 생각할 때 당신의 감정은?",
+            options: [
+                { text: "어떤 재미있는 일이 벌어질까 설렌다", weights: { dolphin: 2, fox: 2, dog: 1 } },
+                { text: "미리 대비하고 준비해야 한다는 책임감을 느낀다", weights: { lion: 1, owl: 2, wolf: 3 } }
+            ]
+        },
+        {
+            id: 11,
+            text: "여행지를 고를 때 당신의 기준은?",
+            options: [
+                { text: "현지 문화를 깊게 체험할 수 있는 곳", weights: { owl: 2, wolf: 1, cat: 1 } },
+                { text: "모두가 즐겁고 신나게 놀 수 있는 명소", weights: { dolphin: 3, dog: 2, lion: 1 } }
+            ]
+        },
+        {
+            id: 12,
+            text: "결정을 내릴 때 당신이 더 의지하는 것은?",
+            options: [
+                { text: "객관적인 사실과 논리", weights: { owl: 2, wolf: 2, lion: 1, fox: 1 } },
+                { text: "나의 느낌과 주변 사람들의 조언", weights: { dog: 2, dolphin: 2, sloth: 1, cat: 1 } }
             ]
         }
     ],
-    results: [
-        {
-            id: "E",
-            title: "에너지 넘치는 인싸",
-            emoji: "🔥",
-            desc: "당신은 사람들과 어울릴 때 에너지를 얻는 타입입니다. 어디서나 활발하고 사교적인 당신은 팀의 분위기 메이커군요!"
+    results: {
+        lion: {
+            title: "위엄 있는 정글의 왕 '사자'",
+            emoji: "🦁",
+            desc: "당신은 타고난 리더십과 강한 자신감을 가지고 있습니다. 목표가 정해지면 주저 없이 행동하며, 카리스마로 주변을 이끄는 힘이 있네요. 당신의 열정은 주변 사람들에게 큰 동기부여가 됩니다.",
+            hue: 35
         },
-        {
-            id: "I",
-            title: "사색을 즐기는 예술가",
-            emoji: "🌙",
-            desc: "당신은 내면의 세계가 깊고 혼자만의 시간을 소중히 여깁니다. 조용한 관찰력을 통해 남들이 보지 못하는 것을 발견하곤 하죠."
+        dolphin: {
+            title: "자유로운 바다의 전령 '돌고래'",
+            emoji: "🐬",
+            desc: "당신은 사교적이고 긍정적인 에너지가 넘치는 사람입니다. 타인과의 소통을 즐기며, 어떤 상황에서도 즐거움을 찾아내는 능력이 탁월합니다. 당신이 있는 곳은 언제나 웃음이 끊이지 않죠.",
+            hue: 200
         },
-        {
-            id: "S",
-            title: "꼼꼼한 현실주의자",
-            emoji: "📐",
-            desc: "당신은 구체적이고 현실적인 데이터를 중요시합니다. 실수가 적고 맡은 바 책임을 다하는 든든한 사람입니다."
+        owl: {
+            title: "지혜로운 밤의 파수꾼 '부엉이'",
+            emoji: "🦉",
+            desc: "당신은 차분하고 분석적인 사고방식을 가진 전략가입니다. 겉으로 드러내기보다 내면의 지식을 쌓는 것을 즐기며, 모두가 놓치는 핵심을 꿰뚫어 보는 통찰력이 당신의 가장 큰 무기입니다.",
+            hue: 260
         },
-        {
-            id: "N",
-            title: "창의적인 몽상가",
-            emoji: "✨",
-            desc: "당신은 상상력이 풍부하고 새로운 가능성을 찾는 것을 즐깁니다. 가끔 엉뚱하다는 소리를 듣지만, 세상은 당신 같은 혁신가가 바꿉니다!"
+        fox: {
+            title: "영리하고 유연한 '여우'",
+            emoji: "🦊",
+            desc: "당신은 상황 판단이 빠르고 재치가 넘치는 사람입니다. 변화에 민감하며 어떤 환경에서도 빠르게 적응하는 유연함을 가졌습니다. 당신의 창의적인 아이디어는 늘 사람들을 놀라게 합니다.",
+            hue: 25
+        },
+        sloth: {
+            title: "여유로운 힐링 마스터 '나무늘보'",
+            emoji: "🦥",
+            desc: "당신은 서두르지 않고 자신만의 속도로 세상을 살아가는 평화주의자입니다. 사소한 일에 일희일비하지 않는 당신의 여유는 주변 사람들에게도 편안한 안식처가 되어줍니다.",
+            hue: 80
+        },
+        dog: {
+            title: "다정한 우리들의 친구 '골든 리트리버'",
+            emoji: "🦮",
+            desc: "당신은 따뜻한 공감 능력과 한결같은 성실함을 지닌 사람입니다. 주변 사람들을 챙기고 돕는 일에서 큰 행복을 느끼며, 당신의 진심은 누구에게나 신뢰를 줍니다.",
+            hue: 45
+        },
+        cat: {
+            title: "독립적이고 매력적인 '고양이'",
+            emoji: "🐈",
+            desc: "당신은 자신만의 주관이 뚜렷하고 독립적인 성향을 가졌습니다. 구속받는 것을 싫어하며 혼자만의 시간에서 큰 에너지를 얻습니다. 당신의 신비로운 매력은 사람들의 호기심을 자극합니다.",
+            hue: 280
+        },
+        wolf: {
+            title: "냉철하고 충직한 '늑대'",
+            emoji: "🐺",
+            desc: "당신은 겉으론 차가워 보일 수 있지만, 내면엔 강한 책임감과 신념을 가진 사람입니다. 목표를 위해 묵묵히 나아가며, 자신이 아끼는 소중한 사람들을 지키는 데 누구보다 진심입니다.",
+            hue: 210
         }
-    ]
+    }
 };
 
 // 2. 상태 관리
 let currentStep = 0;
-let scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+let scores = { lion: 0, dolphin: 0, owl: 0, fox: 0, sloth: 0, dog: 0, cat: 0, wolf: 0 };
 
 // 3. DOM 요소 참조
 const screens = {
@@ -88,6 +168,7 @@ const screens = {
 const elements = {
     startBtn: document.getElementById('start-btn'),
     restartBtn: document.getElementById('restart-btn'),
+    shareBtn: document.getElementById('share-btn'),
     progressBar: document.getElementById('progress-bar'),
     questionNumber: document.getElementById('question-number'),
     questionText: document.getElementById('question-text'),
@@ -100,36 +181,34 @@ const elements = {
 // 4. 기능 함수
 function showScreen(screenId) {
     Object.values(screens).forEach(screen => screen.classList.remove('active'));
-    screens[screenId].classList.add('active');
+    setTimeout(() => {
+        screens[screenId].classList.add('active');
+    }, 50);
 }
 
 function updateQuiz() {
     const question = quizData.questions[currentStep];
     const totalSteps = quizData.questions.length;
     
-    // UI 업데이트
     elements.questionNumber.textContent = `${currentStep + 1} / ${totalSteps}`;
     elements.questionText.textContent = question.text;
     elements.progressBar.style.width = `${((currentStep + 1) / totalSteps) * 100}%`;
     
-    // 옵션 생성
     elements.optionsContainer.innerHTML = '';
     question.options.forEach(option => {
         const button = document.createElement('button');
         button.className = 'option-btn';
         button.textContent = option.text;
-        button.onclick = () => handleOptionClick(option.types);
+        button.onclick = () => handleOptionClick(option.weights);
         elements.optionsContainer.appendChild(button);
     });
 }
 
-function handleOptionClick(types) {
-    // 점수 합산
-    for (const [type, score] of Object.entries(types)) {
-        scores[type] += score;
+function handleOptionClick(weights) {
+    for (const [animal, weight] of Object.entries(weights)) {
+        scores[animal] += weight;
     }
     
-    // 다음 단계로
     if (currentStep < quizData.questions.length - 1) {
         currentStep++;
         updateQuiz();
@@ -139,35 +218,52 @@ function handleOptionClick(types) {
 }
 
 function showResult() {
-    // 가장 높은 점수의 유형 찾기 (간단하게 E/I/S/N 중 최고점)
-    const candidates = ['E', 'I', 'S', 'N'];
-    let topType = 'E';
+    let topAnimal = 'lion';
     let maxScore = -1;
     
-    candidates.forEach(type => {
-        if (scores[type] > maxScore) {
-            maxScore = scores[type];
-            topType = type;
+    for (const [animal, score] of Object.entries(scores)) {
+        if (score > maxScore) {
+            maxScore = score;
+            topAnimal = animal;
         }
-    });
+    }
     
-    const result = quizData.results.find(r => r.id === topType);
+    const result = quizData.results[topAnimal];
     
-    // UI 업데이트
     elements.resultTitle.textContent = result.title;
     elements.resultEmoji.textContent = result.emoji;
     elements.resultDesc.textContent = result.desc;
     
-    // 테마 색상 변경 (OKLCH 변수 활용)
-    const hues = { 'E': 20, 'I': 250, 'S': 180, 'N': 300 };
-    document.documentElement.style.setProperty('--hue', hues[topType]);
+    document.documentElement.style.setProperty('--hue', result.hue);
     
     showScreen('result');
 }
 
+async function shareResult() {
+    const title = '영혼의 동물 찾기 테스트 결과';
+    const text = `나의 영혼의 동물은 '${elements.resultTitle.textContent}'입니다! 당신은 어떤 동물인가요?`;
+    const url = window.location.href;
+
+    if (navigator.share) {
+        try {
+            await navigator.share({ title, text, url });
+        } catch (err) {
+            console.error('공유 실패:', err);
+        }
+    } else {
+        // 클립보드 복사 폴백
+        try {
+            await navigator.clipboard.writeText(`${text}\n${url}`);
+            alert('결과가 클립보드에 복사되었습니다. 원하는 곳에 붙여넣으세요!');
+        } catch (err) {
+            alert('공유 기능을 사용할 수 없는 브라우저입니다.');
+        }
+    }
+}
+
 function initQuiz() {
     currentStep = 0;
-    scores = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+    scores = { lion: 0, dolphin: 0, owl: 0, fox: 0, sloth: 0, dog: 0, cat: 0, wolf: 0 };
     document.documentElement.style.setProperty('--hue', 250);
     updateQuiz();
     showScreen('quiz');
@@ -176,9 +272,6 @@ function initQuiz() {
 // 5. 이벤트 바인딩
 elements.startBtn.onclick = initQuiz;
 elements.restartBtn.onclick = () => showScreen('intro');
-document.getElementById('share-btn').onclick = () => {
-    alert('결과가 클립보드에 복사되었습니다! (시뮬레이션)');
-};
+elements.shareBtn.onclick = shareResult;
 
-// 초기화 로그
-console.log('Personality Test App Loaded');
+console.log('Soul Animal Test Initialized');
