@@ -136,8 +136,8 @@ async function showResult() {
 }
 
 async function shareResult() {
-    const title = '영혼의 동물 찾기 테스트 결과';
-    const text = `나의 영혼의 동물은 '${elements.resultTitle.textContent}'입니다! 당신은 어떤 동물인가요?`;
+    const title = '내 안의 짐승 보고서 - 나의 본체 확인하기';
+    const text = `세상에... 나의 정체는 '${elements.resultTitle.textContent}'입니다! 당신의 전생은 어떤 짐승인가요?`;
     const url = window.location.href;
     if (navigator.share) {
         try { await navigator.share({ title, text, url }); } catch (err) { console.error('공유 실패:', err); }
