@@ -234,6 +234,13 @@ function showResult() {
     elements.resultEmoji.textContent = result.emoji;
     elements.resultDesc.textContent = result.desc;
     
+    // 심층 분석 링크 업데이트
+    const detailLink = document.getElementById('detail-link');
+    if (detailLink) {
+        detailLink.href = `animal-${topAnimal}.html`;
+        detailLink.textContent = `${result.title.split("'")[1]} 유형 심층 분석 보기 →`;
+    }
+    
     document.documentElement.style.setProperty('--hue', result.hue);
     
     showScreen('result');
