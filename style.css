@@ -1,20 +1,39 @@
-/* Reset & Base Styles */
 :root {
-    --primary-hue: 250;
-    --primary-color: oklch(65% 0.25 var(--primary-hue));
-    --surface: oklch(98% 0.01 var(--primary-hue));
-    --text: oklch(20% 0.05 var(--primary-hue));
+    /* Modern Color Palette using OKLCH */
+    --primary: oklch(65% 0.2 var(--hue, 250));
+    --primary-light: oklch(90% 0.05 var(--hue, 250));
+    --secondary: oklch(75% 0.15 150);
+    --accent: oklch(70% 0.25 20);
+    --surface: oklch(98% 0.01 250);
+    --text: oklch(25% 0.05 250);
+    --text-light: oklch(45% 0.05 250);
+    --white: #ffffff;
+    
+    --hue: 250;
+    --radius: 2rem;
+    --shadow: 0 20px 50px -10px oklch(0% 0 0 / 0.1);
+    --glass: rgba(255, 255, 255, 0.8);
+    
     --bg-texture: url('data:image/svg+xml,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)"/></svg>');
 }
 
-body {
+/* Reset & Base Styles */
+* {
+    box-sizing: border-box;
     margin: 0;
-    font-family: system-ui, -apple-system, sans-serif;
+    padding: 0;
+}
+
+body {
+    font-family: 'Pretendard', system-ui, -apple-system, sans-serif;
     background-color: var(--surface);
     color: var(--text);
-    line-height: 1.6;
+    line-height: 1.5;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     overflow-x: hidden;
-    position: relative;
 }
 
 body::before {
@@ -22,132 +41,217 @@ body::before {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
     background-image: var(--bg-texture);
-    opacity: 0.03;
+    opacity: 0.04;
     pointer-events: none;
     z-index: 1000;
 }
 
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 2rem;
-}
-
-section {
-    margin-bottom: 4rem;
-    padding: 2rem;
-    background: white;
-    border-radius: 1.5rem;
-    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
-}
-
-h1, h2 {
-    color: var(--primary-color);
-}
-
-.hero {
-    text-align: center;
-    padding: 4rem 1rem;
-    background: linear-gradient(135deg, oklch(90% 0.1 250), oklch(85% 0.1 280));
-    color: oklch(30% 0.1 250);
-}
-
-/* 1. Container Queries */
-.resize-handle {
-    resize: horizontal;
-    overflow: hidden;
-    border: 2px dashed #ccc;
-    padding: 1rem;
-    min-width: 250px;
-    max-width: 100%;
-}
-
-.card-container {
-    container-type: inline-size;
-    container-name: card;
-}
-
-.responsive-card {
+/* Layout Containers */
+.app-container {
+    width: 100%;
+    max-width: 500px;
+    padding: 1.5rem;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    padding: 1rem;
-    background: #f9f9f9;
-    border-radius: 1rem;
-    transition: all 0.3s ease;
+    justify-content: center;
 }
 
-.card-image {
-    width: 100%;
-    aspect-ratio: 16/9;
-    background: linear-gradient(45deg, #ddd, #eee);
-    border-radius: 0.5rem;
+/* Screen Transitions */
+.screen {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@container card (min-width: 500px) {
-    .responsive-card {
-        flex-direction: row;
-        align-items: center;
-    }
-    .card-image {
-        width: 150px;
-        height: 150px;
-    }
-}
-
-/* 2. The :has() Selector */
-.has-card {
-    padding: 2rem;
-    border: 2px solid #eee;
-    border-radius: 1rem;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.has-card:has(#accent-toggle:checked) {
-    background-color: var(--primary-color);
-    color: white;
-    border-color: transparent;
-    box-shadow: 0 20px 40px -10px oklch(65% 0.25 var(--primary-hue) / 0.5);
-}
-
-.has-inner p {
-    font-weight: 500;
-}
-
-/* 3. Modern Colors (OKLCH) */
-.color-grid {
+.screen.active {
     display: flex;
-    gap: 1rem;
-    margin: 1rem 0;
+    flex-direction: column;
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.swatch {
-    width: 60px;
-    height: 60px;
-    border-radius: 0.75rem;
-    background-color: var(--bg);
-    box-shadow: 0 5px 15px -5px rgba(0,0,0,0.2);
-}
-
-.glow-button {
-    padding: 1rem 2rem;
-    font-size: 1rem;
-    font-weight: 600;
-    border: none;
-    border-radius: 50px;
-    background: var(--primary-color);
-    color: white;
-    cursor: pointer;
+/* Components: Cards */
+.card {
+    background: var(--white);
+    padding: 2.5rem 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    text-align: center;
     position: relative;
-    transition: transform 0.2s ease;
+    overflow: hidden;
 }
 
-.glow-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0 20px 5px oklch(65% 0.25 var(--primary-hue) / 0.4);
+.card.glass {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-/* Logical Properties */
-.glow-button-container {
-    margin-block-start: 2rem;
+/* Typography */
+h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+h1 span {
+    color: var(--primary);
+    position: relative;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+p {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+/* Buttons */
+button {
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s ease;
+}
+
+.primary-btn {
+    width: 100%;
+    padding: 1.2rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 1.2rem;
+    box-shadow: 0 10px 20px -5px oklch(65% 0.2 var(--hue) / 0.4);
+}
+
+.primary-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px -5px oklch(65% 0.2 var(--hue) / 0.5);
+}
+
+.secondary-btn {
+    width: 100%;
+    padding: 1.2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background: var(--primary-light);
+    color: var(--primary);
+    border: none;
+    border-radius: 1.2rem;
+    margin-bottom: 0.8rem;
+}
+
+/* Quiz Specifics */
+.quiz-header {
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.progress-container {
+    flex-grow: 1;
+    height: 12px;
+    background: var(--primary-light);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 20%;
+    height: 100%;
+    background: var(--primary);
+    transition: width 0.4s ease;
+}
+
+#question-number {
+    font-weight: 700;
+    color: var(--primary);
+    font-variant-numeric: tabular-nums;
+}
+
+.options-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.option-btn {
+    padding: 1.2rem;
+    text-align: left;
+    background: var(--surface);
+    border: 2px solid transparent;
+    border-radius: 1.2rem;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.option-btn:hover {
+    background: var(--white);
+    border-color: var(--primary);
+    transform: translateX(5px);
+}
+
+/* Badge & Effects */
+.badge {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: var(--primary-light);
+    color: var(--primary);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.badge.success {
+    background: oklch(90% 0.1 150);
+    color: oklch(50% 0.2 150);
+}
+
+.hero-image {
+    font-size: 5rem;
+    margin-bottom: 2rem;
+}
+
+.result-emoji {
+    font-size: 6rem;
+    margin: 1.5rem 0;
+    animation: bounce 2s infinite ease-in-out;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* Result Screen */
+.result-actions {
+    margin-top: 1rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 480px) {
+    .app-container {
+        padding: 1rem;
+    }
+    .card {
+        padding: 2rem 1.5rem;
+    }
+    h1 {
+        font-size: 1.8rem;
+    }
+}
+
+/* :has() Selector usage: Highlight card if primary button is hovered */
+.card:has(.primary-btn:hover) {
+    box-shadow: 0 30px 60px -10px oklch(0% 0 0 / 0.15);
 }
