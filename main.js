@@ -18,22 +18,22 @@ const quizData = {
         { id: 12, axis: "JP", text: "과제를 제출할 때 당신은?", options: [{ text: "미리 끝내놓고 여유롭게 검토한다", value: "J" }, { text: "마감 직전의 압박감이 있어야 속도가 난다", value: "P" }] }
     ],
     results: {
-        "ENTJ": { id: "lion", title: "카리스마 있는 전략 리더 '사자'", emoji: "🦁", hue: 35, advice: "취약성을 드러내는 것이 때로는 더 큰 신뢰를 구축합니다." },
-        "ISTP": { id: "tiger", title: "독립적인 야심가 '호랑이'", emoji: "🐯", hue: 25, advice: "타인의 부족함을 비난하기보다 성장을 돕는 스승의 태도를 가져보세요." },
-        "ISTJ": { id: "wolf", title: "원칙과 충직의 가디언 '늑대'", emoji: "🐺", hue: 210, advice: "가끔은 예외를 인정하는 유연함이 집단을 더 건강하게 만듭니다." },
-        "ENTP": { id: "fox", title: "영리한 전술가 '여우'", emoji: "🦊", hue: 45, advice: "모든 것을 머리로만 해결하려 하지 마세요. 우직한 진심이 더 큰 문을 엽니다." },
-        "ENFJ": { id: "dolphin", title: "공감하는 소셜 마스터 '돌고래'", emoji: "🐬", hue: 200, advice: "건강한 거리두기가 당신의 다정함을 더 오래 유지시켜 줍니다." },
-        "ISFJ": { id: "dog", title: "한결같은 서포터 '리트리버'", emoji: "🦮", hue: 50, advice: "자신의 경계를 지킬 때 당신의 선의도 더욱 가치 있어집니다." },
-        "ISFP": { id: "cat", title: "독립적인 심미안 '고양이'", emoji: "🐈", hue: 280, advice: "가끔은 당신의 아름다운 세계를 타인과 공유해 보세요." },
-        "INTJ": { id: "owl", title: "냉철한 통찰가 '부엉이'", emoji: "🦉", hue: 260, advice: "80%의 확신이 있다면 행동으로 옮기며 배워가는 유연성을 가져보세요." },
-        "ESFJ": { id: "elephant", title: "묵직한 신뢰의 아이콘 '코끼리'", emoji: "🐘", hue: 190, advice: "변화의 파도를 타고 유연하게 움직이는 법을 익혀보세요." },
-        "ESTJ": { id: "eagle", title: "비전을 그리는 전략가 '독수리'", emoji: "🦅", hue: 220, advice: "위대한 비전은 현실의 토대 위에서 완성됩니다." },
-        "INFP": { id: "sloth", title: "평화로운 힐링 마스터 '나무늘보'", emoji: "🦥", hue: 85, advice: "중요한 목표 앞에서는 에너지를 집중하는 법을 연습해 보세요." },
-        "ENFP": { id: "panda", title: "유니크한 낙천가 '판다'", emoji: "🐼", hue: 10, advice: "최소한의 현실적 책임감을 갖추어 보세요." },
-        "INTP": { id: "snake", title: "지적인 관찰자 '뱀'", emoji: "🐍", hue: 140, advice: "투명함이 당신의 지적인 매력을 더욱 돋보이게 할 것입니다." },
-        "ESTP": { id: "horse", title: "역동적인 자유 영혼 '말'", emoji: "🐎", hue: 30, advice: "당신이 지나온 길의 발자국을 확인하며 완결성을 높여보세요." },
-        "ESFP": { id: "monkey", title: "재치 있는 아이디어 뱅크 '원숭이'", emoji: "🐒", hue: 40, advice: "당신의 다재다능함이 전문성이라는 줄기를 만나게 하세요." },
-        "INFJ": { id: "turtle", title: "끈기 있는 완결자 '거북이'", emoji: "🐢", hue: 120, advice: "당신의 끈기에 효율이 더해지면 무적입니다." }
+        "ENTJ": { id: "lion", title: "무대를 장악하는 총사령관 '사자'", emoji: "🦁", hue: 35, advice: "가끔은 뒤처진 동료의 손을 잡고 천천히 걷는 것이 진짜 위대한 왕의 덕목이랍니다." },
+        "ISTP": { id: "tiger", title: "독립적인 해결사 '호랑이'", emoji: "🐯", hue: 25, advice: "혼자 가면 빠르지만 함께 가야만 볼 수 있는 풍경이 있어요. 가끔은 당신의 등 뒤를 동료들에게 맡겨보세요." },
+        "ISTJ": { id: "wolf", title: "원칙과 신뢰의 가디언 '늑대'", emoji: "🐺", hue: 210, advice: "세상은 때로 계획대로 되지 않기에 아름다운 거예요. 가끔은 지도에 없는 길로 들어서서 길을 잃어보는 여유를 가져보세요." },
+        "ENTP": { id: "fox", title: "영리한 아이디어 뱅크 '여우'", emoji: "🦊", hue: 45, advice: "하나의 우물을 깊게 파는 인내가 당신의 천재성을 완성할 거예요. 가끔은 '왜'보다 '어떻게 끝낼까'를 고민해 보세요." },
+        "ENFJ": { id: "dolphin", title: "공감하는 소셜 마스터 '돌고래'", emoji: "🐬", hue: 200, advice: "세상 모든 사람의 행복을 당신이 책임질 수는 없어요. 가끔은 무리에서 벗어나 깊은 바다 아래에서 혼자만의 고요를 즐겨보세요." },
+        "ISFJ": { id: "dog", title: "한결같은 서포터 '리트리버'", emoji: "🦮", hue: 50, advice: "당신의 '아니요'는 상대방을 향한 공격이 아니라 당신 자신을 지키는 방패예요. 가끔은 거절을 통해 당신의 선의를 더 귀하게 만드세요." },
+        "ISFP": { id: "cat", title: "독립적인 심미안 '고양이'", emoji: "🐈", hue: 280, advice: "당신의 세계는 충분히 아름다워요. 하지만 그 세계를 세상과 더 많이 공유한다면 당신의 인생은 훨씬 더 다채로워질 거예요." },
+        "INTJ": { id: "owl", title: "냉철한 통찰가 '부엉이'", emoji: "🦉", hue: 260, advice: "이론은 완벽해도 사람은 완벽할 수 없어요. 가끔은 비논리적인 감정의 영역도 인생의 중요한 데이터라는 점을 인정해 보세요." },
+        "ESFJ": { id: "elephant", title: "든든한 조화의 수호자 '코끼리'", emoji: "🐘", hue: 190, advice: "당신은 이미 충분히 잘하고 있어요. 가끔은 가방 속의 무거운 책임감을 내려놓고 당신 자신의 행복을 위해 가볍게 춤을 춰보세요." },
+        "ESTJ": { id: "eagle", title: "비전을 완수하는 실행가 '독수리'", emoji: "🦅", hue: 220, advice: "높이 날다 보면 땅 위의 작은 꽃들을 못 볼 수 있어요. 가끔은 땅으로 내려와 사람들의 구체적인 삶과 감정을 들여다봐 주세요." },
+        "INFP": { id: "sloth", title: "평화로운 힐링 마스터 '나무늘보'", emoji: "🦥", hue: 85, advice: "당신의 평화는 소중하지만, 가끔은 등껍질 밖으로 나와 뜨거운 태양 아래에서 전력 질주해보는 경험도 필요해요." },
+        "ENFP": { id: "panda", title: "유니크한 낙천가 '판다'", emoji: "🐼", hue: 10, advice: "당신의 낙원은 소중해요. 하지만 그 낙원을 지키려면 현실의 기반이라는 울타리도 필요하다는 걸 잊지 마세요." },
+        "INTP": { id: "snake", title: "보이지 않는 수의 분석가 '뱀'", emoji: "🐍", hue: 140, advice: "당신의 지식은 공유될 때 더 빛이 나요. 차가운 이성 뒤에 숨겨진 따뜻한 호기심을 사람들에게 조금만 더 보여주세요." },
+        "ESTP": { id: "horse", title: "멈추지 않는 도전자 '말'", emoji: "🐎", hue: 30, advice: "달리는 것만큼 멈춰 서서 뒤를 돌아보는 것도 중요해요. 당신이 지나온 길의 발자국을 확인하며 마무리의 디테일을 조금만 더 챙겨보세요." },
+        "ESFP": { id: "monkey", title: "재치 만점 에너지 메이커 '원숭이'", emoji: "🐒", hue: 40, advice: "인생은 파티만으로 채워질 수 없어요. 가끔은 조용히 앉아 하나의 우물을 깊게 파는 인내의 시간을 가져보세요." },
+        "INFJ": { id: "turtle", title: "끈기 있는 완결자 '거북이'", emoji: "🐢", hue: 120, advice: "가끔은 등껍질 밖으로 고개를 내밀고 세상의 빠른 변화를 느껴보세요. 당신의 깊이에 유연함만 더한다면 당신은 무적입니다." }
     }
 };
 
@@ -70,20 +70,16 @@ function toggleTheme() {
     localStorage.setItem('theme', newTheme);
 }
 
-if (elements.themeToggle) {
-    elements.themeToggle.addEventListener('click', toggleTheme);
-}
-
+if (elements.themeToggle) elements.themeToggle.addEventListener('click', toggleTheme);
 initTheme();
 
-// --- Mobile Menu Toggle Logic ---
+// --- Mobile Menu ---
 function toggleMenu() {
     const isActive = elements.navLinks.classList.toggle('active');
     elements.menuToggle.classList.toggle('active');
     elements.menuToggle.setAttribute('aria-expanded', isActive);
     document.body.classList.toggle('menu-open', isActive);
 }
-
 if (elements.menuToggle) elements.menuToggle.onclick = (e) => { e.stopPropagation(); toggleMenu(); };
 
 function showScreen(screenId) {
@@ -130,15 +126,18 @@ function showResult() {
 
     const result = quizData.results[type];
     
+    // Initial loading state
     elements.resultTitle.textContent = "영혼 분석 중...";
     elements.resultEmoji.textContent = "⏳";
+    elements.resultEmoji.style.animation = "pulse 1.5s infinite";
     elements.resultDesc.textContent = "당신의 깊은 무의식을 스캔하고 있습니다.";
     showScreen('result');
 
     setTimeout(() => {
-        elements.resultTitle.textContent = result.title;
+        elements.resultTitle.textContent = `당신은 '${result.title.split("'")[1]}' 타입!`;
         elements.resultEmoji.textContent = result.emoji;
-        elements.resultDesc.textContent = "당신의 본능적 유형이 결정되었습니다. 아래 버튼을 통해 당신의 행동 심리 리포트를 확인해보세요.";
+        elements.resultEmoji.style.animation = "float 5s infinite ease-in-out";
+        elements.resultDesc.textContent = result.title;
         
         const adviceText = document.querySelector('.advice-text');
         if (adviceText) adviceText.textContent = `"${result.advice}"`;
@@ -146,15 +145,16 @@ function showResult() {
         const detailLink = document.getElementById('detail-link');
         if (detailLink) {
             detailLink.href = `animal-${result.id}.html`;
-            detailLink.textContent = `${result.title.split("'")[1]} 유형 심층 분석 보고서 보기 →`;
+            detailLink.textContent = "심층 분석 리포트 읽기";
         }
         document.documentElement.style.setProperty('--hue', result.hue);
-    }, 1500);
+    }, 2000);
 }
 
 function initQuiz() {
     currentStep = 0;
     userProfile = { E: 0, I: 0, S: 0, N: 0, T: 0, F: 0, J: 0, P: 0 };
+    document.documentElement.style.setProperty('--hue', 260);
     updateQuiz();
     showScreen('quiz');
 }
@@ -162,9 +162,9 @@ function initQuiz() {
 if (elements.startBtn) elements.startBtn.onclick = initQuiz;
 if (elements.restartBtn) elements.restartBtn.onclick = () => showScreen('intro');
 if (elements.shareBtn) elements.shareBtn.onclick = () => {
-    const text = `나의 정체는 '${elements.resultTitle.textContent}'입니다! 당신은 어떤 짐승인가요?`;
+    const text = `나의 본능은 '${elements.resultTitle.textContent}'! 당신은 어떤 짐승인가요?`;
     const url = window.location.href;
     if (navigator.share) navigator.share({ title: '내안의짐승', text, url });
-    else { navigator.clipboard.writeText(`${text}\n${url}`); alert('복사되었습니다.'); }
+    else { navigator.clipboard.writeText(`${text}\n${url}`); alert('결과 링크가 복사되었습니다!'); }
 };
-console.log('내안의짐승 initialized with Theme System');
+console.log('내안의짐승 initialized');

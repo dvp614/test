@@ -70,7 +70,7 @@
 
         <section id="result-screen" class="screen">
             <div class="card result-card">
-                <div class="badge success">최종 분석 보고서</div>
+                <div class="badge success">최종 분석 리포트</div>
                 
                 <!-- Result Top Ad -->
                 <div class="ad-slot result-top-ad">
@@ -78,13 +78,15 @@
                     <div class="ad-placeholder-content">Sponsored Content</div>
                 </div>
 
-                <h2 id="result-title">분석 완료</h2>
-                <div id="result-emoji" class="result-emoji">⌛</div>
-                <div class="result-content">
-                    <p id="result-desc">결과를 생성하고 있습니다...</p>
-                    
+                <div class="result-main">
+                    <h2 id="result-title">분석 중...</h2>
+                    <div id="result-emoji" class="result-emoji">⌛</div>
+                    <p id="result-desc">당신의 깊은 무의식을 스캔하고 있습니다.</p>
+                </div>
+                
+                <div class="result-content-wrap">
                     <div class="soul-advice">
-                        <span class="advice-label">✨ 영혼의 조언</span>
+                        <span class="advice-label">✨ 오늘의 영혼 조언</span>
                         <p class="advice-text">"모든 것이 중요하지만, 사실 그 어떤 것도 그리 중요하지는 않습니다."</p>
                     </div>
 
@@ -95,9 +97,9 @@
                     </div>
 
                     <div class="recommendation-box">
-                        <h3>💡 심층 분석</h3>
-                        <p>당신의 본능에 대한 더 구체적인 행동 데이터가 준비되었습니다.</p>
-                        <a id="detail-link" href="#" class="text-link">상세 분석 보기 →</a>
+                        <h3>🔍 더 깊은 본능 파헤치기</h3>
+                        <p>당신의 방어기제와 일상의 습관, 환상의 짝꿍까지 담긴 <strong>정밀 보고서</strong>가 준비되었습니다.</p>
+                        <a id="detail-link" href="#" class="primary-btn">심층 분석 리포트 읽기</a>
                     </div>
                 </div>
                 
@@ -108,28 +110,40 @@
                 </div>
 
                 <div class="result-actions">
-                    <button id="share-btn" class="primary-btn">결과 공유</button>
-                    <button id="restart-btn" class="secondary-btn">다시 하기</button>
+                    <button id="share-btn" class="secondary-btn">결과 공유하기</button>
+                    <button id="restart-btn" class="secondary-btn">다시 테스트하기</button>
                 </div>
             </div>
         </section>
 
         
-        <section id="about-test" class="content-section" style="margin-top: 5rem; padding: 2rem; background: var(--surface); border-radius: var(--radius-lg); border: var(--glass-border);">
-            <h2 style="font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--primary);">내안의짐승: 심리 분석 테스트란?</h2>
-            <p><strong>내안의짐승</strong> 테스트는 현대인들이 사회적 가면(Persona) 뒤에 숨겨둔 무의식적인 본능을 16가지 동물 유형으로 분류하여 분석하는 정밀 행동 심리 플랫폼입니다. 우리는 일상생활, 인간관계, 스트레스 대처 방식 등에서 각기 다른 패턴을 보입니다. 본 테스트는 이러한 행동 패턴을 바탕으로 사용자의 가장 깊은 내면을 조명합니다.</p>
-            
-            <h3 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--text);">과학적인 4축 매트릭스 분석 기법</h3>
-            <p>본 테스트는 단순한 흥미 위주의 질문이 아닌, 심리학적 타당성을 갖춘 4가지 축을 기준으로 설계되었습니다.</p>
-            <ul>
-                <li><strong>에너지의 방향:</strong> 외부와의 교류를 통해 에너지를 얻는가, 혹은 내면의 고요함에서 에너지를 얻는가.</li>
-                <li><strong>인식의 방식:</strong> 현실적이고 구체적인 데이터를 선호하는가, 직관적이고 거시적인 비전을 선호하는가.</li>
-                <li><strong>판단의 기준:</strong> 객관적인 논리와 효율을 중시하는가, 타인과의 정서적 공감과 조화를 중시하는가.</li>
-                <li><strong>생활의 양식:</strong> 계획적이고 통제된 환경을 선호하는가, 유연하고 개방적인 대처를 선호하는가.</li>
-            </ul>
-            
-            <h3 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--text);">결과의 활용 및 관계의 이해</h3>
-            <p>12개의 정교한 질문을 통과하면, 당신은 사자, 늑대, 돌고래, 부엉이 등 16종의 독특한 짐승 중 하나로 판별됩니다. 이 보고서는 단순한 성격 설명을 넘어, 당신의 <strong>'생태적 본능'</strong>, 위기 상황에서 나타나는 <strong>'무의식적 방어기제'</strong>, 그리고 당신과 가장 완벽한 시너지를 내는 <strong>'영혼의 단짝'</strong>을 제시합니다. 나와 타인의 다름을 이해하고, 더 건강한 관계를 맺기 위한 나침반으로 이 테스트를 활용해 보세요.</p>
+        <!-- Test Information Section (For SEO & User Trust) -->
+        <section id="about-test" class="content-section" style="margin-top: 6rem; padding: 0;">
+            <div class="card glass" style="text-align: left; padding: clamp(2rem, 5vw, 4rem);">
+                <div class="badge" style="margin-bottom: 1.5rem;">The Science Behind Instinct</div>
+                <h2 style="font-size: clamp(1.8rem, 5vw, 2.5rem); margin-top: 0; border-bottom: none; padding-bottom: 0;">내안의짐승: <br><span style="color: var(--primary);">진짜 나를 만나는 시간</span></h2>
+                <p style="font-size: 1.15rem; line-height: 1.8; margin-top: 1.5rem; color: var(--text-muted);">우리는 사회생활을 하며 저마다의 <strong>가면(Persona)</strong>을 쓰고 살아갑니다. 하지만 위기의 순간, 혹은 가장 편안한 순간에 불쑥 튀어나오는 것이 진짜 당신의 <strong>'야수적 본능'</strong>입니다. 내안의짐승은 정밀한 행동 분석을 통해 당신의 심연에 잠든 16가지 본능의 유형을 정밀하게 타격합니다.</p>
+
+                <div class="info-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 4rem;">
+                    <div class="info-item">
+                        <h3 style="display: flex; align-items: center; gap: 0.8rem; font-size: 1.3rem; margin-bottom: 1rem; color: var(--white);"><span style="font-size: 1.8rem;">🧠</span> 4축 매트릭스 분석</h3>
+                        <p style="font-size: 0.95rem; line-height: 1.7;">단순한 문답이 아닙니다. 에너지의 방향, 인식의 방식, 판단의 기준, 생활의 양식을 분석하는 <strong>심리학적 4축 시스템</strong>을 기반으로 결과의 타당성을 확보했습니다.</p>
+                    </div>
+                    <div class="info-item">
+                        <h3 style="display: flex; align-items: center; gap: 0.8rem; font-size: 1.3rem; margin-bottom: 1rem; color: var(--white);"><span style="font-size: 1.8rem;">🦁</span> 16종의 정밀 프로필</h3>
+                        <p style="font-size: 0.95rem; line-height: 1.7;">사자부터 거북이까지, 당신의 기질을 가장 잘 설명하는 <strong>16가지 동물 프로필</strong>을 통해 생태적 본능과 무의식적 방어기제를 깊이 있게 파헤칩니다.</p>
+                    </div>
+                    <div class="info-item">
+                        <h3 style="display: flex; align-items: center; gap: 0.8rem; font-size: 1.3rem; margin-bottom: 1rem; color: var(--white);"><span style="font-size: 1.8rem;">🧬</span> 본능적 관계의 이해</h3>
+                        <p style="font-size: 0.95rem; line-height: 1.7;">나와 잘 맞는 <strong>'영혼의 단짝'</strong>을 확인하고, 서로의 다름을 본능적 관점에서 이해함으로써 더 건강하고 풍요로운 인간관계를 맺을 수 있도록 돕습니다.</p>
+                    </div>
+                </div>
+
+                <div class="info-box" style="margin-top: 4rem; background: rgba(var(--primary), 0.05); border-inline-start: 6px solid var(--primary); padding: 2rem;">
+                    <p style="margin: 0; font-size: 1.1rem; color: var(--text); font-weight: 700;">"모든 것이 중요하지만, 사실 그 어떤 것도 그리 중요하지는 않습니다."</p>
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-muted);">지금 바로 12개의 질문을 통해 당신 안에 잠든 진짜 짐승의 목소리에 귀를 기울여 보세요.</p>
+                </div>
+            </div>
         </section>
 
         <section id="library" class="library-section">
