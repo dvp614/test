@@ -436,7 +436,12 @@ li {
     border-radius: 50px;
 }
 
-.soul-connection-emoji { font-size: 4.5rem; margin-bottom: 1rem; z-index: 1; }
+.soul-connection-emoji { 
+    font-size: clamp(5rem, 18vw, 7.5rem); 
+    margin-bottom: 1.5rem; 
+    z-index: 1; 
+    filter: drop-shadow(0 0 25px oklch(70% 0.3 var(--partner-hue, 200) / 0.5));
+}
 .soul-connection-name { font-size: 2.2rem; font-weight: 950; color: var(--text); z-index: 1; }
 .soul-connection-desc { font-size: 1.1rem; color: var(--text-muted); font-weight: 600; max-width: 80%; line-height: 1.4; z-index: 1; }
 
@@ -473,6 +478,9 @@ li {
 .result-emoji {
     display: inline-block;
     will-change: transform;
+    font-size: clamp(9rem, 35vw, 15rem); 
+    margin: 3.5rem 0;
+    filter: drop-shadow(0 0 50px var(--primary-glow));
 }
 
 .result-actions {
@@ -560,7 +568,16 @@ li {
     align-items: center;
 }
 .lib-card:hover { transform: translateY(-10px); border-color: var(--primary); }
-.lib-emoji { font-size: 4.5rem; margin-bottom: 1.5rem; }
+.lib-emoji { 
+    font-size: clamp(5.5rem, 15vw, 7.5rem); 
+    margin-bottom: 1.5rem; 
+    filter: drop-shadow(0 0 15px rgba(128,128,128,0.2));
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.lib-card:hover .lib-emoji {
+    transform: scale(1.15) rotate(5deg);
+    filter: drop-shadow(0 0 30px var(--primary-glow));
+}
 .lib-link { 
     margin-top: 2rem;
     padding: 0.8rem 2.5rem;
