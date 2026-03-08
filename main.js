@@ -183,23 +183,19 @@ if (elements.shareBtn) elements.shareBtn.onclick = () => {
         });
     }
 };
-// --- Language Switcher Logic ---
+// --- Language Switcher Logic (URL Based) ---
 function changeLanguage(lang) {
-    const combo = document.querySelector('.goog-te-combo');
-    if (combo) {
-        combo.value = lang;
-        // 브라우저 호환성을 위한 이벤트 발생
-        if (typeof(Event) === 'function') {
-            combo.dispatchEvent(new Event('change', { bubbles: true }));
-        } else {
-            const event = document.createEvent('HTMLEvents');
-            event.initEvent('change', true, true);
-            combo.dispatchEvent(event);
-        }
-    } else {
-        // 위젯이 아직 로드되지 않았을 경우 0.5초 후 재시도
-        setTimeout(() => changeLanguage(lang), 500);
+    if (lang === 'ko') {
+        // 한국어 선택 시 원본 페이지로 이동 (번역 레이어 제거)
+        window.location.href = window.location.pathname;
+        return;
     }
+    
+    const currentUrl = window.location.href;
+    const translateUrl = `https://translate.google.com/translate?sl=ko&tl=${lang}&u=${encodeURIComponent(currentUrl)}`;
+    
+    // 번역된 페이지로 이동
+    window.location.href = translateUrl;
 }
 
 console.log('내안의짐승 initialized with Theme & Global Lang System');
