@@ -171,7 +171,7 @@ async function showResult() {
 }
 
 async function shareResult() {
-    const title = '내 안의 짐승: 소울 테스트 - 나의 본체 확인하기';
+    const title = '내안의짐승.TEST - 나의 본체 확인하기';
     const text = `세상에... 나의 정체는 '${elements.resultTitle.textContent}'입니다! 당신의 전생은 어떤 짐승인가요?`;
     const url = window.location.href;
     if (navigator.share) {
