@@ -3,48 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>소름돋게 정확한 '내 안의 짐승' 테스트 | 소울 애니멀 찾기</title>
-    <meta name="description" content="12개의 질문으로 당신의 소울 애니멀을 확인하고, 각 동물의 독특한 성격과 생태적 특징을 배우는 종합 심리 분석 플랫폼입니다.">
+    <title>내안의짐승 | 소름돋게 정확한 본능 테스트</title>
+    <meta name="description" content="16가지 심리학적 분석으로 당신 안에 숨겨진 진짜 짐승을 찾아보세요.">
     
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://soulanimal.test/">
-    <meta property="og:title" content="전생에 나였던 동물 찾기 | 심리 테스트 & 짐승 백과">
+    <meta property="og:title" content="내안의짐승 | 소름돋게 정확한 본능 테스트">
     <meta property="og:description" content="나의 진짜 본성은 무엇일까? 12가지 질문으로 내 안에 숨겨진 소울 애니멀을 확인해보세요!">
     <meta property="og:image" content="https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=1200&h=630&q=80">
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://soulanimal.test/">
-    <meta property="twitter:title" content="전생에 나였던 동물 찾기 | 심리 테스트 & 짐승 백과">
-    <meta property="twitter:description" content="나의 진짜 본성은 무엇일까? 12가지 질문으로 내 안에 숨겨진 소울 애니멀을 확인해보세요!">
-    <meta property="twitter:image" content="https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=1200&h=630&q=80">
-
     <link rel="stylesheet" href="style.css">
-    
-    <!-- Structured Data for AdSense/SEO -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Quiz",
-      "name": "전생에 나였던 동물 찾기",
-      "description": "성격 유형 분석을 통한 소울 애니멀 매칭 테스트",
-      "educationalAlignment": [
-        {
-          "@type": "AlignmentObject",
-          "alignmentType": "personality analysis"
-        }
-      ]
-    }
-    </script>
 </head>
 <body>
-        <header class="main-header">
+    <header class="main-header">
         <nav class="nav-container">
-            <a href="index.html" class="logo">내안의짐승<span>.TEST</span></a>
+            <a href="index.html" class="logo">내안의짐승</a>
             <ul class="nav-links" id="nav-links">
                 <li><a href="index.html">홈</a></li>
-                <li><a href="index.html#library">짐승 백과</a></li>
+                <li><a href="#library">짐승 백과</a></li>
                 <li><a href="about.html">소개</a></li>
                 <li><a href="contact.html">문의</a></li>
             </ul>
@@ -54,26 +29,22 @@
         </nav>
     </header>
 
-    <!-- Top Ad Placeholder -->
     <div class="ad-slot top-ad">
         <span class="ad-label">ADVERTISEMENT</span>
-        <!-- AdSense Code would go here -->
     </div>
 
     <main class="app-container">
-        <!-- 1. Intro Screen -->
         <section id="intro-screen" class="screen active">
             <div class="card glass hero-card">
-                <div class="badge">Professional Personality Analysis</div>
-                <h1>내 안의 숨겨진 <br><span>동물적 본능</span>을 깨우다</h1>
-                <p>단순한 재미를 넘어, 당신의 행동 양식과 가치관을 <br> 정밀하게 분석하여 가장 완벽한 '소울 애니멀'을 찾아드립니다.</p>
-                <div class="hero-image">🦁🐬🦉🦊</div>
-                <button id="start-btn" class="primary-btn pulse">무료 테스트 시작하기</button>
-                <p class="trust-badge">🔒 개인정보는 저장되지 않으며 익명으로 진행됩니다.</p>
+                <div class="badge">Psychological Instinct Analysis</div>
+                <h1>내 안의 숨겨진 <br><span>야수적 본능</span></h1>
+                <p>가면 뒤에 숨겨진 당신의 진짜 모습을 <br> 정밀한 행동 분석을 통해 공개합니다.</p>
+                <div class="hero-image">🦁🐯🐺🦅</div>
+                <button id="start-btn" class="primary-btn pulse">내안의짐승 확인하기</button>
+                <p class="trust-badge">🔒 익명성이 보장되며 데이터는 저장되지 않습니다.</p>
             </div>
         </section>
 
-        <!-- 2. Quiz Screen -->
         <section id="quiz-screen" class="screen">
             <div class="quiz-header">
                 <div class="progress-container">
@@ -82,119 +53,83 @@
                 <span id="question-number">1 / 12</span>
             </div>
             <div class="card quiz-card">
-                <h2 id="question-text">질문 내용이 여기에 들어갑니다.</h2>
-                <div id="options-container" class="options-grid">
-                    <!-- Options by JS -->
-                </div>
+                <h2 id="question-text">질문을 분석 중입니다...</h2>
+                <div id="options-container" class="options-grid"></div>
             </div>
         </section>
 
-        <!-- 3. Result Screen -->
         <section id="result-screen" class="screen">
             <div class="card result-card">
-                <div class="badge success">분석 완료 보고서</div>
-                <h2 id="result-title">당신은 '사자' 타입!</h2>
-                <div id="result-emoji" class="result-emoji">🦁</div>
+                <div class="badge success">최종 분석 보고서</div>
+                <h2 id="result-title">분석 완료</h2>
+                <div id="result-emoji" class="result-emoji">⌛</div>
                 <div class="result-content">
-                    <p id="result-desc">당신은 강력한 리더십과 카리스마를 가진 사람입니다...</p>
+                    <p id="result-desc">결과를 생성하고 있습니다...</p>
                     
                     <div class="soul-advice">
                         <span class="advice-label">✨ 영혼의 조언</span>
                         <p class="advice-text">"모든 것이 중요하지만, 사실 그 어떤 것도 그리 중요하지는 않습니다."</p>
                     </div>
 
-                    <!-- Mid-Content Ad -->
                     <div class="ad-slot mid-ad">
                         <span class="ad-label">ADVERTISEMENT</span>
                     </div>
 
                     <div class="recommendation-box">
-                        <h3>💡 추천 정보</h3>
-                        <p>'사자' 유형의 더 자세한 특징과 어울리는 직업군이 궁금하신가요?</p>
-                        <a id="detail-link" href="#" class="text-link">사자 유형 심층 분석 보기 →</a>
+                        <h3>💡 심층 분석</h3>
+                        <p>당신의 본능에 대한 더 구체적인 행동 데이터가 준비되었습니다.</p>
+                        <a id="detail-link" href="#" class="text-link">상세 분석 보기 →</a>
                     </div>
                 </div>
                 
                 <div class="result-actions">
-                    <button id="share-btn" class="primary-btn">분석 결과 공유하기</button>
+                    <button id="share-btn" class="primary-btn">결과 공유</button>
                     <button id="restart-btn" class="secondary-btn">다시 하기</button>
                 </div>
             </div>
         </section>
 
-        <!-- AdSense Content: Animal Library -->
         <section id="library" class="library-section">
             <h2 class="section-title">짐승 백과</h2>
-            <p class="section-desc">우리의 테스트에 포함된 8가지 동물의 흥미로운 특징을 확인해보세요.</p>
+            <p class="section-desc">16가지 본능의 심리학적 프로필을 확인하세요.</p>
             <div class="library-grid">
-                <article class="lib-card">
-                    <div class="lib-emoji">🦁</div>
-                    <h3>사자 (Lion)</h3>
-                    <p>위엄과 리더십의 상징</p>
-                    <a href="animal-lion.html" class="lib-link">상세 보기</a>
-                </article>
-                <article class="lib-card">
-                    <div class="lib-emoji">🐬</div>
-                    <h3>돌고래 (Dolphin)</h3>
-                    <p>사교성과 지능의 대명사</p>
-                    <a href="animal-dolphin.html" class="lib-link">상세 보기</a>
-                </article>
-                <article class="lib-card">
-                    <div class="lib-emoji">🦉</div>
-                    <h3>부엉이 (Owl)</h3>
-                    <p>지혜와 통찰력의 관찰자</p>
-                    <a href="animal-owl.html" class="lib-link">상세 보기</a>
-                </article>
-                <article class="lib-card">
-                    <div class="lib-emoji">🦊</div>
-                    <h3>여우 (Fox)</h3>
-                    <p>영리함과 유연한 적응력</p>
-                    <a href="animal-fox.html" class="lib-link">상세 보기</a>
-                </article>
-                <article class="lib-card">
-                    <div class="lib-emoji">🦥</div>
-                    <h3>나무늘보 (Sloth)</h3>
-                    <p>여유와 평화의 힐러</p>
-                    <a href="animal-sloth.html" class="lib-link">상세 보기</a>
-                </article>
-                <article class="lib-card">
-                    <div class="lib-emoji">🦮</div>
-                    <h3>리트리버 (Dog)</h3>
-                    <p>다정함과 한결같은 충성심</p>
-                    <a href="animal-dog.html" class="lib-link">상세 보기</a>
-                </article>
-                <article class="lib-card">
-                    <div class="lib-emoji">🐈</div>
-                    <h3>고양이 (Cat)</h3>
-                    <p>독립심과 신비로운 매력</p>
-                    <a href="animal-cat.html" class="lib-link">상세 보기</a>
-                </article>
-                <article class="lib-card">
-                    <div class="lib-emoji">🐺</div>
-                    <h3>늑대 (Wolf)</h3>
-                    <p>냉철함과 강한 신념</p>
-                    <a href="animal-wolf.html" class="lib-link">상세 보기</a>
-                </article>
+                <!-- 16 Animals -->
+                <article class="lib-card"> <div class="lib-emoji">🦁</div> <h3>사자</h3> <a href="animal-lion.html" class="lib-link">분석 보기</a> </article>
+                <article class="lib-card"> <div class="lib-emoji">🐯</div> <h3>호랑이</h3> <a href="animal-tiger.html" class="lib-link">분석 보기</a> </article>
+                <article class="lib-card"> <div class="lib-emoji">🐺</div> <h3>늑대</h3> <a href="animal-wolf.html" class="lib-link">분석 보기</a> </article>
+                <article class="lib-card"> <div class="lib-emoji">🦊</div> <h3>여우</h3> <a href="animal-fox.html" class="lib-link">분석 보기</a> </article>
+                <article class="lib-card"> <div class="lib-emoji">🐬</div> <h3>돌고래</h3> <a href="animal-dolphin.html" class="lib-link">분석 보기</a> </article>
+                <article class="lib-card"> <div class="lib-emoji">🦮</div> <h3>리트리버</h3> <a href="animal-dog.html" class="lib-link">분석 보기</a> </article>
+                <article class="lib-card"> <div class="lib-emoji">🐈</div> <h3>고양이</h3> <a href="animal-cat.html" class="lib-link">분석 보기</a> </article>
+                <article class="lib-card"> <div class="lib-emoji">🦉</div> <h3>부엉이</h3> <a href="animal-owl.html" class="lib-link">분석 보기</a> </article>
+                <article class="lib-card"> <div class="lib-emoji">🐘</div> <h3>코끼리</h3> <a href="animal-elephant.html" class="lib-link">분석 보기</a> </article>
+                <article class="lib-card"> <div class="lib-emoji">🦅</div> <h3>독수리</h3> <a href="animal-eagle.html" class="lib-link">분석 보기</a> </article>
+                <article class="lib-card"> <div class="lib-emoji">🦥</div> <h3>나무늘보</h3> <a href="animal-sloth.html" class="lib-link">분석 보기</a> </article>
+                <article class="lib-card"> <div class="lib-emoji">🐼</div> <h3>판다</h3> <a href="animal-panda.html" class="lib-link">분석 보기</a> </article>
+                <article class="lib-card"> <div class="lib-emoji">🐍</div> <h3>뱀</h3> <a href="animal-snake.html" class="lib-link">분석 보기</a> </article>
+                <article class="lib-card"> <div class="lib-emoji">🐎</div> <h3>말</h3> <a href="animal-horse.html" class="lib-link">분석 보기</a> </article>
+                <article class="lib-card"> <div class="lib-emoji">🐒</div> <h3>원숭이</h3> <a href="animal-monkey.html" class="lib-link">분석 보기</a> </article>
+                <article class="lib-card"> <div class="lib-emoji">🐢</div> <h3>거북이</h3> <a href="animal-turtle.html" class="lib-link">분석 보기</a> </article>
             </div>
         </section>
     </main>
 
-        <footer class="main-footer">
+    <footer class="main-footer">
         <div class="footer-container">
             <div class="footer-brand">
-                <a href="index.html" class="logo">내안의짐승<span>.보고서</span></a>
-                <p>전문적인 심리 분석 및 성향 매칭 플랫폼</p>
+                <a href="index.html" class="logo">내안의짐승</a>
+                <p>전문적인 행동 심리 분석 플랫폼</p>
             </div>
             <div class="footer-nav">
                 <div class="footer-col">
                     <h4>서비스</h4>
                     <a href="index.html">테스트 시작</a>
-                    <a href="index.html#library">동물 백과</a>
+                    <a href="#library">짐승 백과</a>
                 </div>
                 <div class="footer-col">
                     <h4>고객지원</h4>
                     <a href="about.html">소개</a>
-                    <a href="contact.html">문의하기</a>
+                    <a href="contact.html">문의</a>
                 </div>
                 <div class="footer-col">
                     <h4>법적 고지</h4>
@@ -204,7 +139,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 내안의짐승.TEST. All rights reserved.</p>
+            <p>&copy; 2026 내안의짐승. All rights reserved.</p>
         </div>
     </footer>
 
