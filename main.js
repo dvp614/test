@@ -188,7 +188,17 @@ function changeLanguage(lang) {
     const combo = document.querySelector('.goog-te-combo');
     if (combo) {
         combo.value = lang;
-        combo.dispatchEvent(new Event('change'));
+        // 브라우저 호환성을 위한 이벤트 발생
+        if (typeof(Event) === 'function') {
+            combo.dispatchEvent(new Event('change', { bubbles: true }));
+        } else {
+            const event = document.createEvent('HTMLEvents');
+            event.initEvent('change', true, true);
+            combo.dispatchEvent(event);
+        }
+    } else {
+        // 위젯이 아직 로드되지 않았을 경우 0.5초 후 재시도
+        setTimeout(() => changeLanguage(lang), 500);
     }
 }
 
