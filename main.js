@@ -183,19 +183,15 @@ if (elements.shareBtn) elements.shareBtn.onclick = () => {
         });
     }
 };
-// --- Language Switcher Logic (URL Based) ---
+// --- Language Switcher Logic (Cookie Based) ---
 function changeLanguage(lang) {
-    if (lang === 'ko') {
-        // 한국어 선택 시 원본 페이지로 이동 (번역 레이어 제거)
-        window.location.href = window.location.pathname;
-        return;
-    }
+    // 구글 번역 쿠키 설정 (도메인 범위 포함)
+    const domain = window.location.hostname === 'localhost' ? '' : `domain=.${window.location.hostname.replace('www.', '')};`;
+    document.cookie = `googtrans=/ko/${lang}; ${domain} path=/`;
+    document.cookie = `googtrans=/ko/${lang}; path=/`; // 폴백용
     
-    const currentUrl = window.location.href;
-    const translateUrl = `https://translate.google.com/translate?sl=ko&tl=${lang}&u=${encodeURIComponent(currentUrl)}`;
-    
-    // 번역된 페이지로 이동
-    window.location.href = translateUrl;
+    // 페이지 새로고침으로 번역 적용
+    location.reload();
 }
 
 console.log('내안의짐승 initialized with Theme & Global Lang System');
