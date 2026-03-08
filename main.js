@@ -183,4 +183,13 @@ if (elements.shareBtn) elements.shareBtn.onclick = () => {
         });
     }
 };
-console.log('내안의짐승 initialized');
+// --- Language Switcher Logic ---
+function changeLanguage(lang) {
+    const combo = document.querySelector('.goog-te-combo');
+    if (combo) {
+        combo.value = lang;
+        combo.dispatchEvent(new Event('change'));
+    }
+}
+
+console.log('내안의짐승 initialized with Theme & Global Lang System');
