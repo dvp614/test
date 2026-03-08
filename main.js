@@ -23,7 +23,7 @@ const quizData = {
         owl: { title: "지혜로운 밤의 파수꾼 '부엉이'", emoji: "🦉", desc: "당신은 차분하고 분석적인 사고방식을 가진 전략가입니다. 모두가 놓치는 핵심을 꿰뚫어 보는 통찰력이 당신의 가장 큰 무기입니다.", hue: 260, keyword: "owl" },
         fox: { title: "영리하고 유연한 '여우'", emoji: "🦊", desc: "당신은 상황 판단이 빠르고 재치가 넘치는 사람입니다. 변화에 민감하며 어떤 환경에서도 빠르게 적응하는 유연함을 가졌습니다.", hue: 25, keyword: "fox" },
         sloth: { title: "여유로운 힐링 마스터 '나무늘보'", emoji: "🦥", desc: "당신은 서두르지 않고 자신만의 속도로 세상을 살아가는 평화주의자입니다. 당신의 여유는 주변 사람들에게도 편안함을 줍니다.", hue: 80, keyword: "sloth" },
-        dog: { title: "다정한 우리들의 친구 '골든 리트리버'", emoji: "🦮", desc: "당신은 따뜻한 공감 능력과 한결같은 성실함을 지닌 사람입니다. 주변 사람들을 챙기고 돕는 일에서 큰 행복을 느낍니다.", hue: 45, keyword: "golden retriever" },
+        dog: { title: "다정한 우리들의 친구 '골든 리트리버'", emoji: "🦮", desc: "당신은 따뜻한 공감 능력과 한결같은 성실함을 지닌 사람입니다. 주변 사람들을 챙기고 돕는 일에서 큰 행복을 느낀다.", hue: 45, keyword: "golden retriever" },
         cat: { title: "독립적이고 매력적인 '고양이'", emoji: "🐈", desc: "당신은 자신만의 주관이 뚜렷하고 독립적인 성향을 가졌습니다. 구속받는 것을 싫어하며 혼자만의 시간에서 큰 에너지를 얻습니다.", hue: 280, keyword: "cat" },
         wolf: { title: "냉철하고 충직한 '늑대'", emoji: "🐺", desc: "당신은 겉으론 차가워 보일 수 있지만, 내면엔 강한 책임감과 신념을 가진 사람입니다. 자신이 아끼는 사람들을 지키는 데 진심입니다.", hue: 210, keyword: "wolf" }
     }
@@ -43,12 +43,52 @@ const elements = {
     optionsContainer: document.getElementById('options-container'),
     resultTitle: document.getElementById('result-title'),
     resultEmoji: document.getElementById('result-emoji'),
-    resultDesc: document.getElementById('result-desc')
+    resultDesc: document.getElementById('result-desc'),
+    menuToggle: document.getElementById('menu-toggle'),
+    navLinks: document.getElementById('nav-links')
 };
 
+// --- Mobile Menu Toggle Logic ---
+function toggleMenu() {
+    const isActive = elements.navLinks.classList.toggle('active');
+    elements.menuToggle.classList.toggle('active');
+    elements.menuToggle.setAttribute('aria-expanded', isActive);
+    document.body.classList.toggle('menu-open', isActive);
+}
+
+if (elements.menuToggle) {
+    elements.menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMenu();
+    });
+}
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (elements.navLinks.classList.contains('active') && 
+        !elements.navLinks.contains(e.target) && 
+        !elements.menuToggle.contains(e.target)) {
+        toggleMenu();
+    }
+});
+
+if (elements.navLinks) {
+    elements.navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (elements.navLinks.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+    });
+}
+
 function showScreen(screenId) {
-    Object.values(screens).forEach(screen => screen.classList.remove('active'));
-    setTimeout(() => { screens[screenId].classList.add('active'); }, 50);
+    if (!screens[screenId]) return;
+    Object.values(screens).forEach(screen => { if (screen) screen.classList.remove('active'); });
+    setTimeout(() => { 
+        screens[screenId].classList.add('active'); 
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 50);
 }
 
 function updateQuiz() {
@@ -123,9 +163,11 @@ async function showResult() {
     
     // 배경 이미지 적용 (옵션)
     const resultCard = document.querySelector('.result-card');
-    resultCard.style.backgroundImage = `linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('${imageUrl}')`;
-    resultCard.style.backgroundSize = 'cover';
-    resultCard.style.backgroundPosition = 'center';
+    if (resultCard) {
+        resultCard.style.backgroundImage = `linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('${imageUrl}')`;
+        resultCard.style.backgroundSize = 'cover';
+        resultCard.style.backgroundPosition = 'center';
+    }
 
     const detailLink = document.getElementById('detail-link');
     if (detailLink) {
@@ -154,11 +196,11 @@ function initQuiz() {
     showScreen('quiz');
 }
 
-elements.startBtn.onclick = initQuiz;
-elements.restartBtn.onclick = () => {
+if (elements.startBtn) elements.startBtn.onclick = initQuiz;
+if (elements.restartBtn) elements.restartBtn.onclick = () => {
     const resultCard = document.querySelector('.result-card');
-    resultCard.style.backgroundImage = 'none';
+    if (resultCard) resultCard.style.backgroundImage = 'none';
     showScreen('intro');
 };
-elements.shareBtn.onclick = shareResult;
+if (elements.shareBtn) elements.shareBtn.onclick = shareResult;
 console.log('Soul Animal Test Pro initialized');

@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>부엉이(Owl) 유형 심층 분석 | 내안의짐승.보고서 백과사전</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-        <header class="main-header">
+import os
+import re
+
+header = """    <header class="main-header">
         <nav class="nav-container">
             <a href="index.html" class="logo">내안의짐승<span>.보고서</span></a>
             <ul class="nav-links" id="nav-links">
@@ -20,17 +14,9 @@
                 <span class="hamburger"></span>
             </button>
         </nav>
-    </header>
-    <main class="app-container">
-        <article class="card glass" style="text-align: left;">
-            <div class="badge">Animal Encyclopedia</div>
-            <h1>지혜로운 관찰자, <span>부엉이(Owl)</span></h1>
-            <div class="lib-emoji" style="text-align: center; font-size: 5rem;">🦉</div>
-            <p>당신은 분석적이고 신중한 사고를 지닌 사람입니다. 모두가 서두를 때 한발 물러나 본질을 꿰뚫어 보는 지혜를 가졌습니다.</p>
-            <div style="margin-top: 3rem; text-align: center;"><a href="index.html" class="primary-btn">다시 테스트하기</a></div>
-        </article>
-    </main>
-    <footer class="main-footer">
+    </header>"""
+
+footer = """    <footer class="main-footer">
         <div class="footer-container">
             <div class="footer-brand">
                 <a href="index.html" class="logo">내안의짐승<span>.보고서</span></a>
@@ -57,7 +43,51 @@
         <div class="footer-bottom">
             <p>&copy; 2026 내안의짐승.보고서. All rights reserved.</p>
         </div>
-    </footer>
-<script src="main.js" type="module"></script>
-</body>
-</html>
+    </footer>"""
+
+script_tag = '<script src="main.js" type="module"></script>'
+
+files_to_update = [
+    'animal-cat.html',
+    'animal-dog.html',
+    'animal-dolphin.html',
+    'animal-fox.html',
+    'animal-lion.html',
+    'animal-owl.html',
+    'animal-sloth.html',
+    'animal-wolf.html',
+    'privacy.html',
+    'terms.html',
+    'index.html',
+    'about.html',
+    'contact.html'
+]
+
+for filename in files_to_update:
+    path = os.path.join('/home/user/tset/', filename)
+    if not os.path.exists(path):
+        print(f"File {filename} not found.")
+        continue
+
+    with open(path, 'r', encoding='utf-8') as f:
+        content = f.read()
+
+    # Replace header
+    content = re.sub(r'<header class="main-header">.*?</header>', header, content, flags=re.DOTALL)
+
+    # Replace or add footer
+    if '<footer class="main-footer">' in content:
+        content = re.sub(r'<footer class="main-footer">.*?</footer>', footer, content, flags=re.DOTALL)
+    else:
+        # Add before </body>
+        if '</body>' in content:
+            content = content.replace('</body>', footer + '\n</body>')
+
+    # Add script tag if missing
+    if script_tag not in content:
+        if '</body>' in content:
+            content = content.replace('</body>', script_tag + '\n</body>')
+
+    with open(path, 'w', encoding='utf-8') as f:
+        f.write(content)
+    print(f"Updated {filename}")
