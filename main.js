@@ -183,15 +183,30 @@ if (elements.shareBtn) elements.shareBtn.onclick = () => {
         });
     }
 };
-// --- Language Switcher Logic (Cookie Based) ---
+// --- Language Switcher Logic (Advanced Multi-Method) ---
 function changeLanguage(lang) {
-    // 구글 번역 쿠키 설정 (도메인 범위 포함)
-    const domain = window.location.hostname === 'localhost' ? '' : `domain=.${window.location.hostname.replace('www.', '')};`;
+    if (lang === 'ko') {
+        // 한국어 선택 시 모든 번역 설정 초기화 및 새로고침
+        document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=." + location.hostname.replace('www.', '') + "; path=/;";
+        location.href = location.pathname; // 해시 제거하고 새로고침
+        return;
+    }
+
+    // 1. 쿠키 설정
+    const domain = location.hostname === 'localhost' ? '' : `domain=.${location.hostname.replace('www.', '')};`;
     document.cookie = `googtrans=/ko/${lang}; ${domain} path=/`;
-    document.cookie = `googtrans=/ko/${lang}; path=/`; // 폴백용
+    document.cookie = `googtrans=/ko/${lang}; path=/`;
+
+    // 2. 구글 번역 해시 추가 및 페이지 새로고침
+    // 이 방식은 구글 위젯이 URL에서 직접 언어 설정을 읽게 만듭니다.
+    const newHref = location.pathname + location.search + `#googtrans(ko|${lang})`;
+    location.href = newHref;
     
-    // 페이지 새로고침으로 번역 적용
-    location.reload();
+    // 해시 변경만으로 번역이 안 될 경우를 대비해 강제 새로고침
+    setTimeout(() => {
+        location.reload();
+    }, 100);
 }
 
 console.log('내안의짐승 initialized with Theme & Global Lang System');
