@@ -461,24 +461,46 @@ li {
 }
 .lib-card:hover .lib-link { background: var(--primary); border-color: var(--primary); color: white; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
 
-/* Ad Slots */
+/* Optimized Ad Slots */
 .ad-slot {
-    background: var(--ad-bg);
-    margin: 3rem auto;
+    background: rgba(255, 255, 255, 0.02);
+    margin: 2rem auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 1px dashed rgba(255,255,255,0.1);
-    border-radius: 16px;
-    min-height: 120px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-md);
+    min-height: 100px;
     width: 100%;
-    max-width: 900px;
-    overflow: hidden;
+    max-width: 728px;
     position: relative;
+    overflow: hidden;
     backdrop-filter: blur(5px);
+    transition: all 0.3s;
 }
-.ad-label { font-size: 0.7rem; color: var(--text-muted); margin-bottom: 0.5rem; font-weight: 800; letter-spacing: 0.15em; }
+
+.ad-slot:hover {
+    border-color: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.ad-label { 
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 0.6rem; 
+    color: rgba(255, 255, 255, 0.2); 
+    font-weight: 800; 
+    letter-spacing: 0.1em; 
+    pointer-events: none;
+}
+
+.ad-placeholder-content {
+    color: rgba(255, 255, 255, 0.1);
+    font-size: 0.8rem;
+    font-weight: 600;
+}
 
 /* Result Page */
 .result-emoji { font-size: clamp(6rem, 20vw, 10rem); margin: 2.5rem 0; animation: float 5s infinite ease-in-out; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.6)); }
