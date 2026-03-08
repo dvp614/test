@@ -162,9 +162,25 @@ function initQuiz() {
 if (elements.startBtn) elements.startBtn.onclick = initQuiz;
 if (elements.restartBtn) elements.restartBtn.onclick = () => showScreen('intro');
 if (elements.shareBtn) elements.shareBtn.onclick = () => {
-    const text = `나의 본능은 '${elements.resultTitle.textContent}'! 당신은 어떤 짐승인가요?`;
-    const url = window.location.href;
-    if (navigator.share) navigator.share({ title: '내안의짐승', text, url });
-    else { navigator.clipboard.writeText(`${text}\n${url}`); alert('결과 링크가 복사되었습니다!'); }
+    // 현재 도출된 결과의 ID를 가져옴 (detailLink에서 추출하거나 전역 변수 활용)
+    const detailLink = document.getElementById('detail-link');
+    const resultPageUrl = detailLink ? detailLink.href : window.location.href;
+    const animalName = elements.resultTitle.textContent;
+
+    const shareTitle = '내안의짐승 - 나의 본능 확인하기';
+    const shareText = `나의 본능은 '${animalName}'! 당신은 어떤 짐승인가요? 지금 확인해보세요.`;
+
+    if (navigator.share) {
+        navigator.share({
+            title: shareTitle,
+            text: shareText,
+            url: resultPageUrl // 결과 페이지 URL 공유
+        }).catch(err => console.log('공유 실패:', err));
+    } else {
+        const fullShareMsg = `${shareText}\n${resultPageUrl}`;
+        navigator.clipboard.writeText(fullShareMsg).then(() => {
+            alert('결과 페이지 링크가 복사되었습니다! 친구들에게 공유해보세요.');
+        });
+    }
 };
 console.log('내안의짐승 initialized');
