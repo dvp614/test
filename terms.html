@@ -42,6 +42,15 @@
                 <li><a href="contact.html">문의</a></li>
             </ul>
             
+            
+            <div class="lang-switcher">
+                <select onchange="changeLanguage(this.value)" id="lang-select" aria-label="언어 선택">
+                    <option value="ko">KR</option>
+                    <option value="en">EN</option>
+                    <option value="ja">JP</option>
+                    <option value="zh-CN">CN</option>
+                </select>
+            </div>
             <button class="theme-toggle" id="theme-toggle" aria-label="테마 전환">
                 <div class="theme-toggle-icon"></div>
             </button>
@@ -105,5 +114,13 @@
         </div>
     </footer>
     <script src="main.js" type="module"></script>
+
+    <div id="google_translate_element" style="display:none;"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'ko', includedLanguages: 'ko,en,ja,zh-CN', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
