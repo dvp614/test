@@ -495,32 +495,84 @@ li {
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
-.soul-advice {
+/* Enhanced Soul Sections */
+.soul-connection-card {
     margin: 2.5rem 0;
-    padding: 2rem;
-    background: rgba(255, 255, 255, 0.03);
+    padding: 2.5rem;
+    background: linear-gradient(145deg, rgba(30, 200, 255, 0.1), rgba(138, 43, 226, 0.1));
     border-radius: var(--radius-md);
-    border: 1px dashed rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 }
-.advice-label {
+
+.soul-connection-card::before {
+    content: '☯';
     position: absolute;
-    top: -12px;
-    left: 20px;
-    background: var(--primary);
-    padding: 2px 12px;
-    border-radius: 50px;
-    font-size: 0.8rem;
-    font-weight: 800;
-    color: white;
-}
-.advice-text {
-    font-size: 1.2rem;
-    font-weight: 700;
+    font-size: 8rem;
+    opacity: 0.05;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     color: var(--secondary);
-    font-style: italic;
+}
+
+.soul-connection-label {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: var(--secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.soul-connection-name {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--white);
+    text-shadow: 0 0 20px var(--secondary);
+    margin-bottom: 0.5rem;
+}
+
+.soul-connection-desc {
+    font-size: 1rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.soul-advice-box {
+    margin: 3rem 0;
+    padding: 2.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: var(--radius-lg);
+    border-inline-start: 8px solid var(--primary);
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.soul-advice-label {
+    color: var(--primary);
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.soul-advice-text {
+    font-size: 1.4rem;
+    font-weight: 700;
     line-height: 1.6;
-    text-shadow: 0 0 15px var(--primary-glow);
+    color: var(--white);
+    font-style: italic;
+    word-break: keep-all;
 }
 .recommendation-box h3 { color: var(--secondary); margin-bottom: 1rem; }
 .text-link { color: var(--primary); text-decoration: none; font-weight: 700; border-bottom: 1px dashed var(--primary); padding-bottom: 2px; transition: color 0.3s; }
