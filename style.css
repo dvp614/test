@@ -517,57 +517,79 @@ li {
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
-/* Enhanced Soul Sections */
+/* Dynamic Soul Connection Card */
 .soul-connection-card {
-    margin: 2.5rem 0;
-    padding: 2.5rem;
-    background: linear-gradient(145deg, rgba(30, 200, 255, 0.1), rgba(138, 43, 226, 0.1));
-    border-radius: var(--radius-md);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 3rem 0;
+    padding: 3rem 2rem;
+    /* 파트너 동물의 고유 색상을 반영하는 그라데이션 */
+    background: linear-gradient(145deg, 
+        oklch(20% 0.1 var(--partner-hue, 200) / 0.4), 
+        oklch(15% 0.05 var(--partner-hue, 200) / 0.2));
+    border-radius: var(--radius-lg);
+    border: 1px solid oklch(70% 0.2 var(--partner-hue, 200) / 0.3);
     position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 30px oklch(60% 0.2 var(--partner-hue, 200) / 0.1);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.soul-connection-card::before {
-    content: '☯';
+.soul-connection-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: oklch(70% 0.3 var(--partner-hue, 200) / 0.6);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 50px oklch(60% 0.3 var(--partner-hue, 200) / 0.3);
+}
+
+.soul-connection-card::after {
+    content: '';
     position: absolute;
-    font-size: 8rem;
-    opacity: 0.05;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: var(--secondary);
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, oklch(70% 0.3 var(--partner-hue, 200) / 0.1) 0%, transparent 70%);
+    pointer-events: none;
 }
 
 .soul-connection-label {
-    font-size: 0.9rem;
-    font-weight: 800;
-    color: var(--secondary);
+    font-size: 0.85rem;
+    font-weight: 900;
+    color: oklch(80% 0.2 var(--partner-hue, 200));
     text-transform: uppercase;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.3em;
+    margin-bottom: 1.5rem;
+    background: oklch(20% 0.1 var(--partner-hue, 200) / 0.5);
+    padding: 4px 15px;
+    border-radius: 50px;
+    border: 1px solid oklch(70% 0.2 var(--partner-hue, 200) / 0.2);
+}
+
+.soul-connection-emoji {
+    font-size: 4.5rem;
     margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    filter: drop-shadow(0 0 20px oklch(70% 0.3 var(--partner-hue, 200) / 0.5));
+    z-index: 1;
 }
 
 .soul-connection-name {
-    font-size: 1.8rem;
-    font-weight: 900;
+    font-size: 2.2rem;
+    font-weight: 950;
     color: var(--white);
-    text-shadow: 0 0 20px var(--secondary);
+    text-shadow: 0 0 25px oklch(70% 0.3 var(--partner-hue, 200) / 0.8);
     margin-bottom: 0.5rem;
+    z-index: 1;
 }
 
 .soul-connection-desc {
-    font-size: 1rem;
-    color: var(--text-muted);
-    font-weight: 500;
+    font-size: 1.1rem;
+    color: oklch(90% 0.05 var(--partner-hue, 200));
+    font-weight: 600;
+    max-width: 80%;
+    line-height: 1.4;
+    z-index: 1;
 }
 
 .soul-advice-box {
