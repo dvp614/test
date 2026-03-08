@@ -126,16 +126,6 @@ async function fetchAnimalImage(keyword) {
     }
 }
 
-async function fetchAdvice() {
-    try {
-        const response = await fetch('https://api.adviceslip.com/advice');
-        const data = await response.json();
-        return data.slip.advice;
-    } catch (err) {
-        return "자신을 믿으세요. 그것이 가장 큰 힘입니다.";
-    }
-}
-
 async function showResult() {
     let topAnimal = 'lion';
     let maxScore = -1;
@@ -145,26 +135,29 @@ async function showResult() {
     const result = quizData.results[topAnimal];
     
     // UI 로딩 상태 표시
-    elements.resultTitle.textContent = "분석 중...";
+    elements.resultTitle.textContent = "영혼 분석 중...";
     elements.resultEmoji.textContent = "⏳";
-    elements.resultDesc.textContent = "당신과 가장 닮은 동물을 찾고 있습니다.";
+    elements.resultDesc.textContent = "당신의 깊은 내면을 들여다보고 있습니다.";
     showScreen('result');
 
-    // API 연동 데이터 가져오기
-    const [imageUrl, advice] = await Promise.all([
-        fetchAnimalImage(result.keyword),
-        fetchAdvice()
-    ]);
+    // API 연동 데이터 가져오기 (이미지 전용)
+    const imageUrl = await fetchAnimalImage(result.keyword);
 
     // UI 업데이트
     elements.resultTitle.textContent = result.title;
     elements.resultEmoji.textContent = result.emoji;
-    elements.resultDesc.innerHTML = `${result.desc}<br><br><strong>🌟 영혼의 조언:</strong> ${advice}`;
+    elements.resultDesc.textContent = result.desc;
+    
+    // 영혼의 조언 업데이트
+    const adviceText = document.querySelector('.advice-text');
+    if (adviceText) {
+        adviceText.textContent = `"모든 것이 중요하지만, 사실 그 어떤 것도 그리 중요하지는 않습니다."`;
+    }
     
     // 배경 이미지 적용 (옵션)
     const resultCard = document.querySelector('.result-card');
     if (resultCard) {
-        resultCard.style.backgroundImage = `linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('${imageUrl}')`;
+        resultCard.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('${imageUrl}')`;
         resultCard.style.backgroundSize = 'cover';
         resultCard.style.backgroundPosition = 'center';
     }
@@ -178,7 +171,7 @@ async function showResult() {
 }
 
 async function shareResult() {
-    const title = '내 안의 짐승 보고서 - 나의 본체 확인하기';
+    const title = '내 안의 짐승: 소울 테스트 - 나의 본체 확인하기';
     const text = `세상에... 나의 정체는 '${elements.resultTitle.textContent}'입니다! 당신의 전생은 어떤 짐승인가요?`;
     const url = window.location.href;
     if (navigator.share) {
@@ -191,7 +184,7 @@ async function shareResult() {
 function initQuiz() {
     currentStep = 0;
     scores = { lion: 0, dolphin: 0, owl: 0, fox: 0, sloth: 0, dog: 0, cat: 0, wolf: 0 };
-    document.documentElement.style.setProperty('--hue', 250);
+    document.documentElement.style.setProperty('--hue', 260);
     updateQuiz();
     showScreen('quiz');
 }

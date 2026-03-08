@@ -465,6 +465,34 @@ p { font-size: clamp(1rem, 2vw, 1.15rem); color: var(--text-muted); }
     border-inline-start: 6px solid var(--secondary);
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
+
+.soul-advice {
+    margin: 2.5rem 0;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: var(--radius-md);
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    position: relative;
+}
+.advice-label {
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background: var(--primary);
+    padding: 2px 12px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: white;
+}
+.advice-text {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--secondary);
+    font-style: italic;
+    line-height: 1.6;
+    text-shadow: 0 0 15px var(--primary-glow);
+}
 .recommendation-box h3 { color: var(--secondary); margin-bottom: 1rem; }
 .text-link { color: var(--primary); text-decoration: none; font-weight: 700; border-bottom: 1px dashed var(--primary); padding-bottom: 2px; transition: color 0.3s; }
 .text-link:hover { color: var(--white); border-color: var(--white); }
@@ -567,7 +595,19 @@ p { font-size: clamp(1rem, 2vw, 1.15rem); color: var(--text-muted); }
     .lib-card:hover { transform: none; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border-color: rgba(255,255,255,0.08); background: rgba(20, 20, 30, 0.5); }
 }
 
-/* Content Helper Classes (About, Privacy, Terms etc) */
+.content-page { text-align: left; }
+.page-header { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; margin-bottom: 2rem; }
+.back-home { 
+    text-decoration: none; 
+    color: var(--secondary); 
+    font-weight: 700; 
+    font-size: 0.9rem; 
+    padding: 0.5rem 1rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50px;
+    transition: all 0.3s;
+}
+.back-home:hover { background: var(--secondary); color: var(--bg-dark); }
 .content-section { text-align: left; margin: 3rem 0; color: rgba(255,255,255,0.8); }
 .content-section p { margin-bottom: 1.5rem; line-height: 1.8; }
 .content-section h2 { margin-top: 3rem; margin-bottom: 1.2rem; color: var(--white); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem; }
